@@ -40,6 +40,7 @@ public class WicketApplication extends WebApplication
 		super.init();
 
 	    mountPage("/#{roomName}", RoomPage.class); 
+	  
 	}
  
  

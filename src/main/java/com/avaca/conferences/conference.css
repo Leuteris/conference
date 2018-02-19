@@ -1,0 +1,44 @@
+body{
+	background-color: #262626;
+}
+
+.container{
+	width: 80%;
+	
+}
+
+.videoContainer {
+    position: relative;
+    width: 200px;
+    height: 150px;
+}
+.videoContainer video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.connectionstate {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    text-align: center;
+    color: #fff
+}
+
+.muted, .paused{
+    display: none
+    position: absolute
+    z-index: 1
+    color: #12acef
+}
+.muted{
+    left: 0px
+    bottom: 10%
+    width: 100%
+}
+.paused{
+    left: 0px
+    top: 40%
+    width: 100%
+}
