@@ -13,14 +13,15 @@ var webrtc = new SimpleWebRTC({
    media: mediaOptions,
   // immediately ask for camera access
   autoRequestMedia: true,
-  url: 'https://192.168.1.7:8888'
-  
+ // url: 'https://192.168.1.7:8888'
+  url: 'http://192.168.1.7:8888'
 });
 
 // we have to wait until it's ready
 webrtc.on('readyToCall', function () {
-  // you can name it anything
-  webrtc.joinRoom('aa');
+
+	var roomName = $('#roomName').text();
+  webrtc.joinRoom(roomName);
 });
 
 // a peer video has been added
@@ -30,7 +31,7 @@ webrtc.on('videoAdded', function (video, peer) {
     var remotes = document.getElementById('remotes');
     if (remotes) {
         var container = document.createElement('div');
-        container.className = 'videoContainer';
+        container.className = 'videoContainer item';
         container.id = 'container_' + webrtc.getDomId(peer);
         container.appendChild(video);
  // add muted and paused elements
@@ -127,6 +128,25 @@ $(document).ready(function(){
 ////Screen sharing
 /////
 
+	$('.carousel .vertical .item').each(function(){
+		  var next = $(this).next();
+		  if (!next.length) {
+		    next = $(this).siblings(':first');
+		  }
+		  next.children(':first-child').clone().appendTo($(this));
+		  
+		  for (var i=1;i<2;i++) {
+		    next=next.next();
+		    if (!next.length) {
+		    	next = $(this).siblings(':first');
+		  	}
+		    
+		    next.children(':first-child').clone().appendTo($(this));
+		  }
+		});
+
+	
+	
 var button = $('#screenShareButton');
 
     setButton = function (bool) {
@@ -220,6 +240,8 @@ webrtc.on('connectivityError', function (peer) {
     console.log('had local relay candidate', pc.hadLocalRelayCandidate);
     console.log('had remote relay candidate', pc.hadRemoteRelayCandidate);
 });
+
+
 
 
 
