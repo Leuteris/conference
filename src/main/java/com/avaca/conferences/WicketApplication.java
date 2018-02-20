@@ -6,10 +6,12 @@ import java.util.List;
 
 import org.apache.wicket.core.request.mapper.MountedMapper;
 import org.apache.wicket.core.request.mapper.PackageMapper;
+import org.apache.wicket.javascript.IJavaScriptCompressor;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.component.IRequestablePage;
-import org.apache.wicket.request.mapper.mount.MountMapper;
+import org.apache.wicket.resource.CompositeJavaScriptCompressor;
+import org.apache.wicket.resource.CssUrlReplacer;
 
 import com.avaca.conferences.instances.Room;
 
@@ -40,7 +42,9 @@ public class WicketApplication extends WebApplication
 		super.init();
 
 	    mountPage("/#{roomName}", RoomPage.class); 
-	  
+	    getResourceSettings().setCssCompressor(new CssUrlReplacer());
+	    getResourceSettings().setJavaScriptCompressor(new CompositeJavaScriptCompressor());
+
 	}
  
  

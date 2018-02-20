@@ -3,6 +3,9 @@ package com.avaca.conferences;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.wicket.markup.head.CssReferenceHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -12,6 +15,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.PackageResourceReference;
 
 import com.avaca.conferences.instances.Room;
 import com.avaca.conferences.validators.UsernameValidator;
@@ -58,6 +62,8 @@ public class EnterRoomPanel extends Panel {
 
 	}
 	
+	
+
 	public String getSelectedRoom() {
 		return selectedRoom;
 		
