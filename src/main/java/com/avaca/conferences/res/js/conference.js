@@ -24,16 +24,32 @@ webrtc.on('readyToCall', function () {
   webrtc.joinRoom(roomName);
 });
 
+var countParticipants = 0;
 // a peer video has been added
 webrtc.on('videoAdded', function (video, peer) {
+	countParticipants++;
+	//alert('videoAdded');
     console.log('video added', peer);
 	 console.log('videoAdded', peer.nick);
-    var remotes = document.getElementById('remotes');
-    if (remotes) {
-        var container = document.createElement('div');
+    var remotes = document.getElementById('video'+countParticipants);
+   if (remotes) {
+    	
+	 var con = "<div class='item'>" +
+			 		" <div class='videoContainer col-xs-4' id='container_" + webrtc.getDomId(peer) + "'>"+
+			 	              	video +
+							 "<span class='muted'></span>"+
+							 "<div class='connectionstate'>Connection established.</div>"+
+			         "</div>" +
+	 		  " </div>";
+	
+	 
+	
+	 
+    	var container = document.createElement('div');
         container.className = 'videoContainer item';
         container.id = 'container_' + webrtc.getDomId(peer);
         container.appendChild(video);
+    
  // add muted and paused elements
     var muted = document.createElement('span');
     muted.className = 'muted';
@@ -66,12 +82,14 @@ webrtc.on('videoAdded', function (video, peer) {
                 break;
             }
         });
-    }
+   }
 	
         // suppress contextmenu
         video.oncontextmenu = function () { return false; };
-
+        //container2.appendChild(container);
         remotes.appendChild(container);
+        
+      //  $('.addremote').append(con);
     }
 });
 
@@ -127,25 +145,91 @@ $(document).ready(function(){
 /////
 ////Screen sharing
 /////
+	
+	
+	var owl = $('.owl-carousel');
+	owl.owlCarousel({
+	    loop:false,
+	    lazyLoad: true,
+	    margin:20,
+	    nav:true,
+	    responsive:{
+	        0:{
+	            items:2
+	        },
+	        600:{
+	            items:2
+	        },
+	        1000:{
+	            items:5
+	        }
+	    }
+	})
+	    owl.on('mousewheel', '.owl-stage', function (e) {
+    if (e.deltaY>0) {
+        owl.trigger('next.owl');
+    } else {
+        owl.trigger('prev.owl');
+    }
+    e.preventDefault();
+});
+	    
+	// Instantiate the Bootstrap carousel
+	$('.multi-item-carousel').carousel({
+	  interval: false
+	});
 
-	$('.carousel .vertical .item').each(function(){
-		  var next = $(this).next();
-		  if (!next.length) {
-		    next = $(this).siblings(':first');
-		  }
-		  next.children(':first-child').clone().appendTo($(this));
-		  
-		  for (var i=1;i<2;i++) {
-		    next=next.next();
-		    if (!next.length) {
-		    	next = $(this).siblings(':first');
-		  	}
-		    
-		    next.children(':first-child').clone().appendTo($(this));
-		  }
-		});
+	// for every slide in carousel, copy the next slide's item in the slide.
+	// Do the same for the next, next item.
+	$('.multi-item-carousel .item').each(function(){
+	  var next = $(this).next();
+	  if (!next.length) {
+	    next = $(this).siblings(':first');
+	  }
+	  next.children(':first-child').clone().appendTo($(this));
+	  
+	  if (next.next().length>0) {
+	    next.next().children(':first-child').clone().appendTo($(this));
+	  } else {
+	  	$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+	  }
+	});
+	
+	//
+	// navbar  toggle class scroll 
+	//
+	$(window).scroll(function() {
+	    if($(this).scrollTop() > 50)
+	    {
+	        $('.navbar-trans').addClass('afterscroll');
+	    } else
+	    {
+	        $('.navbar-trans').removeClass('afterscroll');
+	    }  
+
+	});
+	  
+	// demo only 
+	// open link in new tab without ugly target="_blank"
+	$("a[href^='http']").attr("target", "_blank");
+///
+	// navbar 
+	//
+	
+	
+	
+	
+	////////chat
+	
+
+
+
+
 
 	
+	//////chat
+	
+
 	
 var button = $('#screenShareButton');
 
@@ -240,9 +324,6 @@ webrtc.on('connectivityError', function (peer) {
     console.log('had local relay candidate', pc.hadLocalRelayCandidate);
     console.log('had remote relay candidate', pc.hadRemoteRelayCandidate);
 });
-
-
-
 
 
 

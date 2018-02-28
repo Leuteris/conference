@@ -30,9 +30,13 @@ public class RoomPanel extends Panel {
 		
 		response.render(CssReferenceHeaderItem.forReference(new CssResourceReference(RoomPanel.class, "res/css/conference.css")));
 		response.render(CssReferenceHeaderItem.forReference(new CssResourceReference(RoomPanel.class, "res/css/bootstrap.min.css")));
+		response.render(CssReferenceHeaderItem.forReference(new CssResourceReference(RoomPanel.class, "res/css/normalize.min.css")));
+		response.render(CssReferenceHeaderItem.forReference(new CssResourceReference(RoomPanel.class, "res/css/owl.carousel.css")));
 		response.render(JavaScriptReferenceHeaderItem.forReference(new JavaScriptResourceReference(RoomPanel.class, "res/js/jquery.min.js")));
 		response.render(JavaScriptReferenceHeaderItem.forReference(new JavaScriptResourceReference(RoomPanel.class, "res/js/bootstrap.min.js")));
 		response.render(JavaScriptReferenceHeaderItem.forReference(new JavaScriptResourceReference(RoomPanel.class, "res/js/simplewebrtclatest-v2.js")));
+		response.render(JavaScriptReferenceHeaderItem.forReference(new JavaScriptResourceReference(RoomPanel.class, "res/js/jquery.mousewheel.min.js")));
+		response.render(JavaScriptReferenceHeaderItem.forReference(new JavaScriptResourceReference(RoomPanel.class, "res/js/owl.carousel.js")));
 		response.render(JavaScriptReferenceHeaderItem.forReference(new JavaScriptResourceReference(RoomPanel.class, "res/js/conference.js")));
 		
 	}
