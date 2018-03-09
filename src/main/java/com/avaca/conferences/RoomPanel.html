@@ -1,65 +1,126 @@
  <wicket:panel>
 
-<div style="margin-bottom: 35px;">
+ <!-- Sidebar -->
+            <!-- Sidebar -->
+      <div id="sidebar-wrapper" >
+      
+        <ul class="sidebar-nav" id="sidebar">    
+        
+        
+                      
+<li class="text-right"  ><a class="navButton"  ><img style="margin-right: 10px;" src="https://lh3.googleusercontent.com/FLqgm0sP_DCudB2LNHnY7sE9fJQ9IJr43eOkRBouGzJLhW6T8zrm30B9gAGIen3u-o0t=w300" alt="Smiley face" height="32" width="32"></a></li>
+   
+<li class="text-right"   ><a class="navButton" id="screenShareButton" ><img style="margin-right: 10px;" src="https://cdn2.iconfinder.com/data/icons/project-management-1-7/48/4-512.png" alt="Smiley face" height="32" width="32"></a></li>
+          
+          <li class="text-right"   ><a class="navButton" id="mute" ><img style="margin-right: 10px;" src="http://deimel.org/commentary/b_images/no-mic_lg.png" alt="Smiley face" height="32" width="32"></a></li>
+          
+           <li class="text-right"   ><a class="navButton" id="pause"><img style="margin-right: 10px;" src=" https://www.phpdorset.co.uk/images/no_video.png " alt="Smiley face" height="32" width="32"></a></li>
+          
+         
+        
+        </ul>
+      </div>
 
-
-<nav class="navbar navbar-findcond navbar-fixed-top" >
+<nav class="navbar navbar-findcond navbar-fixed-top"  id="topNav" >
     <div class="navContainer">
         <div class="navbar-header">
             
            
             <div class="navbar-brand logo" >
        
-       <span id="roomlink">https://localhost:8443/Conference/Room1</span>
+       <span id="roomlink">localhost:8443/Conference/Room1</span>
 
 <button class="btn btn-warning" onclick="copyToClipboard('#roomlink')">Copy invitation link</button>
-<button class="btn btn-warning" id="screenShareButton" >share</button>
-<button class="btn btn-warning" id="mute" >mute</button>
-<button class="btn btn-warning" id="pause" >pause</button>
 
-            
+           
               </div>
               
         </div>
 
     </div>
 </nav>
-</div>
 
-<i class="fa fa-angle-left" aria-hidden="true"></i>
-  
 
-	<div class="icon-bar">
-	  <a   href="#"><img id="micro" height="30" weight="30" alt=""></a> 
-	  <a href="#"><img id="camera" height="30" weight="30" alt=""></a> 
-	  <a href="#"><img id="share_screen" height="30" weight="30" alt=""></a> 
-	  <a href="#"><img id="close" height="30" weight="30" alt=""></a>
-	
-	</div>
 
-<div class="container2"  >
 
+
+
+<div  class="container2" >
+<div  class="conferenceContainer" >
 
 	 
  
-    <div class="row">
+    <div class="row" >
 
-        <div class="col-md-8" id="mainParticipant" >  
+        <div class=" col-md-6 mainVideoContainer" id="mainParticipant"  >  
                          
-                    <div class="mainVideoContainer">     
+                      
                     <div class="localVideoContainer" id="localScreenContainer">
+                    
 	                   <div class="muted"></div>
 	                   <div class="paused"></div>
+	                   <div class="fullscreen">&nbsp;</div>
+	                   
 	                     <video  id="localVideo" class='mainVideo'></video> 
-	                    
+	                     <div class="name connectionstate"></div>
                      </div>
                                         
-                    </div>
+                   
         </div>
-       <div class="col-md-2" id="chatContainer">                   
-                    <div>     
-                           chat 
-                    </div>
+      
+      <div class="col-md-5 chat_container text-center ">
+                                 		 	 
+         <div class="message_section">
+		 <div class="new_message_head">
+		 <div class="pull-left"><button><i class="fa fa-plus-square-o" aria-hidden="true"></i> New Message</button></div><div class="pull-right"><div class="dropdown">
+  <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-cogs" aria-hidden="true"></i>  Setting
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Logout</a></li>
+  </ul>
+</div></div>
+		 </div><!--new_message_head-->
+		 
+		 <div class="chat_area">
+		 <ul class="list-unstyled">
+		 <li class="left clearfix">
+                     <span class="chat-img1 pull-left">
+                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsAUelg7yg0mepGMf-N93hh6E9XrLnKwsKa4YEQ6swhDknk4F9eQ" alt="User Avatar" class="img-circle">
+                     </span>
+                     <div class="chat-body1 clearfix">
+                        <p> hi all</p>
+						<div class="chat_time pull-right">user453 09:34</div>
+                     </div>
+                  </li>
+
+							  <li class="left clearfix admin_chat">
+                     <span class="chat-img1 pull-right">
+                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsAUelg7yg0mepGMf-N93hh6E9XrLnKwsKa4YEQ6swhDknk4F9eQ" alt="User Avatar" class="img-circle">
+                     </span>
+                     <div class="chat-body1 clearfix">
+                        <p>hello hello hellohellohello hello hello hello hello hello hellohellohello hello hello hello hello hello hellohellohello hello hello hello
+						<div class="chat_time pull-left">user349 09:40</div>
+                     </div>
+                  </li>				
+		 
+		 
+		 </ul>
+		 </div><!--chat_area-->
+          <div class="message_write">
+    	 <textarea class="form-control" placeholder="type a message"></textarea>
+		 <div class="clearfix"></div>
+		 <div class="chat_bottom"><a href="#" class="pull-left upload_btn"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+        Add Files</a>
+ <a id="send" href="#" class="pull-right btn btn-success">Send</a></div>
+		 </div>
+		
+      </div>
+   
+                    
         </div>
        
     </div>
@@ -75,7 +136,7 @@
     </div>
 
         
-  
+  </div>
     
         
 </div>
